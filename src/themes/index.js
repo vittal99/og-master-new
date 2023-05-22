@@ -53,7 +53,7 @@ export default function ThemeCustomization({ children }) {
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={themes}>
         <CssBaseline />
-        {children}gdhcdsncdkjdnckjdncdkjcndkcndskmcndscnd
+        {children}
       </ThemeProvider>
     </StyledEngineProvider>
   );

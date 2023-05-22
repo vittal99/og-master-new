@@ -8,11 +8,12 @@ const config = {
   container: true,
   mode: 'light',
   presetColor: 'default',
-  themeDirection: 'ltr'
+  themeDirection: 'ltr',
 };
 
 export default config;
-export const drawerWidth = 260;
+export const drawerWidth = 230;
+// export const drawerHeight = '100vh';
 
 export const twitterColor = '#1DA1F2';
 export const facebookColor = '#3b5998';

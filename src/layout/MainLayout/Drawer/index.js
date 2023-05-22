@@ -27,7 +27,7 @@ const MainDrawer = ({ open, handleDrawerToggle, window }) => {
   return (
     <Box component="nav" sx={{ flexShrink: { md: 0 }, zIndex: 1300 }} aria-label="mailbox folders">
       {!matchDownMD ? (
-        <MiniDrawerStyled variant="permanent" open={open}>
+        <MiniDrawerStyled variant="permanent" open={open}  >
           {drawerHeader}
           {drawerContent}
         </MiniDrawerStyled>
@@ -43,8 +43,14 @@ const MainDrawer = ({ open, handleDrawerToggle, window }) => {
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
-              borderRight: `1px solid ${theme.palette.divider}`,
-              backgroundImage: 'none',
+              height:'97vh',
+              borderRadius: '10px',
+              marginTop:'10px',
+              marginLeft:'10px',
+              // backgroundColor: 'red',
+              // marginBottom:'30px', 
+              // borderRight: `1px solid ${theme.palette.divider}`,
+              // backgroundImage: 'none',
               boxShadow: 'inherit'
             }
           }}
