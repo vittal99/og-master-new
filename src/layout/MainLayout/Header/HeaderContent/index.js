@@ -53,9 +53,10 @@ const HeaderContent = () => {
   }, [location]);
 
   const pageTitleMappings = {
-    // '/dashboard': 'Dashboard',
+     '/dashboard/default': 'Dashboard',
     '/shadow': 'Shadow',
     '/color': 'Color',
+    '/typography':'Typography'
     // Add more mappings as needed
   };
 
@@ -66,7 +67,7 @@ const HeaderContent = () => {
 
   return (
     <>
-      <h3>{getPageTitle()}</h3>
+      <h3 style={{marginLeft:10}}>{getPageTitle()}</h3>
 
       <Box sx={{ marginLeft: 'auto' }}>
         <Notification />

@@ -1,18 +1,11 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-
-// material-ui
+import { Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { AppBar, IconButton, Toolbar, useMediaQuery } from '@mui/material';
-
-// project import
 import AppBarStyled from './AppBarStyled';
 import HeaderContent from './HeaderContent';
-
-// assets
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-
-// ==============================|| MAIN LAYOUT - HEADER ||============================== //
 
 const Header = ({ open, handleDrawerToggle }) => {
   const theme = useTheme();
@@ -23,7 +16,6 @@ const Header = ({ open, handleDrawerToggle }) => {
 
   const [scrollUp, setScrollUp] = useState(false);
 
-  // handle scroll event
   const handleScroll = () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     setScrollUp(scrollTop > 0);
@@ -36,9 +28,16 @@ const Header = ({ open, handleDrawerToggle }) => {
     };
   }, []);
 
-  // common header
   const mainHeader = (
-    <Toolbar style={{ marginTop: 20, borderRadius: 10, backgroundColor: scrollUp ? 'rgb(240,248,255)' : 'transparent', zIndex: scrollUp ? -1 : 'auto' }}>
+    <Toolbar
+      style={{
+        marginTop: 10,
+        marginInline: 25, // Add marginInline style here
+        borderRadius: 10,
+        backgroundColor: scrollUp ? 'rgb(240,248,255)' : 'transparent',
+        zIndex: scrollUp ? -1 : 'auto',
+      }}
+    >
       <IconButton
         disableRipple
         aria-label="open drawer"
@@ -53,44 +52,46 @@ const Header = ({ open, handleDrawerToggle }) => {
     </Toolbar>
   );
 
-  // app-bar params
   const appBar = {
     position: 'fixed',
-    color:  'transparent',
-    backgroundColor: "transparent",
+    color: 'transparent',
+    backgroundColor: 'transparent',
     elevation: 0,
     sx: {
       borderBottom: `1px solid ${theme.palette.divider}`,
-      borderRadius: 20 // Set the border radius here
-    }
+      borderRadius: 20,
+    },
   };
 
-  // content params
   const contentStyle = {
     position: 'relative',
     zIndex: scrollUp ? -1 : 'auto',
-    paddingTop: scrollUp ? '80px' : '0px' // Adjust the padding top value to match the height of the header
+    paddingTop: scrollUp ? '80px' : '0px',
   };
 
   return (
     <>
       {!matchDownMD ? (
         <AppBarStyled open={open} {...appBar}>
-          {mainHeader}
+          <Box sx={{ boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
+            {mainHeader}
+          </Box>
         </AppBarStyled>
       ) : (
-        <AppBar {...appBar}>{mainHeader}</AppBar>
+        <AppBar {...appBar}>
+          <Box sx={{ boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)', marginInline: 30 }}>
+            {mainHeader}
+          </Box>
+        </AppBar>
       )}
-      <div style={contentStyle}>
-        {/* Content goes here */}
-      </div>
+      <div style={contentStyle}>{/* Content goes here */}</div>
     </>
   );
 };
 
 Header.propTypes = {
   open: PropTypes.bool,
-  handleDrawerToggle: PropTypes.func
+  handleDrawerToggle: PropTypes.func,
 };
 
 export default Header;
