@@ -3,7 +3,7 @@ import React, { useState} from 'react';
 
 // project import
 import ComponentSkeleton from './ComponentSkeleton';
-import MainCard from 'components/MainCard';
+// import MainCard from 'components/MainCard';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -14,6 +14,11 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+
 
 
 // ==============================|| COMPONENTS - TYPOGRAPHY ||============================== //
@@ -131,12 +136,19 @@ const ComponentTypography = () => {
           </TableContainer>
         </Grid>
         <Grid item xs={10} sm={6} md={3}>
-          <MainCard  codeHighlight>
-            <Stack>
-            <Box
+        <Button variant="contained">Contained</Button>
+
+        <Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        // sx={{ height: 50}}
+        image="/static/images/cards/contemplative-reptile.jpg"
+        title="green iguana"
+      />
+      <CardContent>
+      <Box
       component="form"
       sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
+        '& .MuiTextField-root': { m: 1, },
       }}
       noValidate
       autoComplete="off"
@@ -185,8 +197,13 @@ const ComponentTypography = () => {
         />
       </div>
     </Box>
-            </Stack>
-          </MainCard>
+     
+      </CardContent>
+      <CardActions>
+        <Button size="small">Share</Button>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </Card>
         </Grid>
       </Grid>
     </ComponentSkeleton>
