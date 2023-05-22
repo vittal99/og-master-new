@@ -32,8 +32,9 @@ const Header = ({ open, handleDrawerToggle }) => {
     <Toolbar
       style={{
         marginTop: 10,
-        marginInline: 25, // Add marginInline style here
+        // Add marginInline style here
         borderRadius: 10,
+        marginInline: 30,
         backgroundColor: scrollUp ? 'rgb(240,248,255)' : 'transparent',
         zIndex: scrollUp ? -1 : 'auto',
       }}
@@ -79,7 +80,7 @@ const Header = ({ open, handleDrawerToggle }) => {
         </AppBarStyled>
       ) : (
         <AppBar {...appBar}>
-          <Box sx={{ boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)', marginInline: 30 }}>
+          <Box sx={{ boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)'}}>
             {mainHeader}
           </Box>
         </AppBar>

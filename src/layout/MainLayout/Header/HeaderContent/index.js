@@ -67,6 +67,9 @@ const HeaderContent = () => {
 
   return (
     <>
+     
+
+      
       <h3 style={{marginLeft:10}}>{getPageTitle()}</h3>
 
       <Box sx={{ marginLeft: 'auto' }}>
@@ -75,6 +78,7 @@ const HeaderContent = () => {
 
       {!matchesXs && <Profile />}
       {matchesXs && <MobileSection />}
+     
     </>
   );
 };
