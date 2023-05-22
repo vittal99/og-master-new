@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -20,9 +21,24 @@ const Header = ({ open, handleDrawerToggle }) => {
   const iconBackColor = 'grey.100';
   const iconBackColorOpen = 'grey.200';
 
+  const [scrollUp, setScrollUp] = useState(false);
+
+  // handle scroll event
+  const handleScroll = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    setScrollUp(scrollTop > 0);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   // common header
   const mainHeader = (
-    <Toolbar>
+    <Toolbar style={{ marginTop: 20, borderRadius: 10, backgroundColor: scrollUp ? 'rgb(240,248,255)' : 'transparent', zIndex: scrollUp ? -1 : 'auto' }}>
       <IconButton
         disableRipple
         aria-label="open drawer"
@@ -40,12 +56,20 @@ const Header = ({ open, handleDrawerToggle }) => {
   // app-bar params
   const appBar = {
     position: 'fixed',
-    color: 'inherit',
+    color:  'transparent',
+    backgroundColor: "transparent",
     elevation: 0,
     sx: {
-      borderBottom: `1px solid ${theme.palette.divider}`
-      // boxShadow: theme.customShadows.z1
+      borderBottom: `1px solid ${theme.palette.divider}`,
+      borderRadius: 20 // Set the border radius here
     }
+  };
+
+  // content params
+  const contentStyle = {
+    position: 'relative',
+    zIndex: scrollUp ? -1 : 'auto',
+    paddingTop: scrollUp ? '80px' : '0px' // Adjust the padding top value to match the height of the header
   };
 
   return (
@@ -57,6 +81,9 @@ const Header = ({ open, handleDrawerToggle }) => {
       ) : (
         <AppBar {...appBar}>{mainHeader}</AppBar>
       )}
+      <div style={contentStyle}>
+        {/* Content goes here */}
+      </div>
     </>
   );
 };
