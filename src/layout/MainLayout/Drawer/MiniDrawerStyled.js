@@ -7,13 +7,17 @@ import { drawerWidth } from 'config';
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
-  borderRight: `1px solid ${theme.palette.divider}`,
+  height: '97vh',
+  marginTop: '10px',
+  marginLeft: '6px',
+  borderRadius: '10px',
+  // backgroundColor:'red',
+  // boxShadow: theme.shadows[3],
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen
   }),
-  overflowX: 'hidden',
-  boxShadow: 'none'
+  overflowX: 'hidden'
 });
 
 const closedMixin = (theme) => ({
@@ -33,6 +37,8 @@ const MiniDrawerStyled = styled(Drawer, { shouldForwardProp: (prop) => prop !== 
   width: drawerWidth,
   flexShrink: 0,
   whiteSpace: 'nowrap',
+  // position: 'fixed',
+  // zIndex: 1, 
   boxSizing: 'border-box',
   ...(open && {
     ...openedMixin(theme),

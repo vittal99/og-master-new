@@ -4,16 +4,16 @@ import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // material-ui
-import { useTheme } from '@mui/material/styles';
-import { ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
-// Avatar, Chip,
+// import { useTheme } from '@mui/material/styles';
+import { Avatar, Chip, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
+
 // project import
 import { activeItem } from 'store/reducers/menu';
 
 // ==============================|| NAVIGATION - LIST ITEM ||============================== //
 
 const NavItem = ({ item, level }) => {
-  const theme = useTheme();
+  // const theme = useTheme();
   const dispatch = useDispatch();
   const { pathname } = useLocation();
 
@@ -45,8 +45,8 @@ const NavItem = ({ item, level }) => {
     // eslint-disable-next-line
   }, [pathname]);
 
-  const textColor = 'text.primary';
-  const iconSelectedColor = 'primary.main';
+  const textColor = 'white';
+  const iconSelectedColor = 'black';
 
   return (
     <ListItemButton
@@ -55,20 +55,23 @@ const NavItem = ({ item, level }) => {
       onClick={() => itemHandler(item.id)}
       selected={isSelected}
       sx={{
+        marginLeft:1,
+        marginRight:1,
+        borderRadius:2,
         zIndex: 1201,
         pl: drawerOpen ? `${level * 28}px` : 1.5,
         py: !drawerOpen && level === 1 ? 1.25 : 1,
         ...(drawerOpen && {
           '&:hover': {
-            bgcolor: 'primary.lighter'
+            bgcolor: '#2C73D4'
           },
           '&.Mui-selected': {
-            bgcolor: 'primary.lighter',
-            borderRight: `2px solid ${theme.palette.primary.main}`,
+            bgcolor: '#2C73D4',
+            // borderRight: `2px solid ${theme.palette.primary.main}`,
             color: iconSelectedColor,
             '&:hover': {
               color: iconSelectedColor,
-              bgcolor: 'primary.lighter'
+              bgcolor: '#2C73D4'
             }
           }
         }),
@@ -117,11 +120,12 @@ const NavItem = ({ item, level }) => {
           primary={
             <Typography variant="h6" sx={{ color: isSelected ? iconSelectedColor : textColor }}>
               {item.title}
+              
             </Typography>
           }
         />
       )}
-      {/* {(drawerOpen || (!drawerOpen && level !== 1)) && item.chip && (
+      {(drawerOpen || (!drawerOpen && level !== 1)) && item.chip && (
         <Chip
           color={item.chip.color}
           variant={item.chip.variant}
@@ -129,7 +133,7 @@ const NavItem = ({ item, level }) => {
           label={item.chip.label}
           avatar={item.chip.avatar && <Avatar>{item.chip.avatar}</Avatar>}
         />
-      )} */}
+      )}
     </ListItemButton>
   );
 };

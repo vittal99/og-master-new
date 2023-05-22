@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 // material-ui
-import { alpha, styled } from '@mui/material/styles';
+import {styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
 // third-party
@@ -16,11 +16,12 @@ const RootStyle = styled(BrowserView)({
 });
 
 // scroll bar wrapper
-const SimpleBarStyle = styled(SimpleBar)(({ theme }) => ({
+const SimpleBarStyle = styled(SimpleBar)(() => ({
   maxHeight: '100%',
   '& .simplebar-scrollbar': {
     '&:before': {
-      backgroundColor: alpha(theme.palette.grey[500], 0.48)
+      backgroundColor: 'grey'
+    
     },
     '&.simplebar-visible:before': {
       opacity: 1
@@ -43,7 +44,7 @@ export default function SimpleBarScroll({ children, sx, ...other }) {
   return (
     <>
       <RootStyle>
-        <SimpleBarStyle timeout={500} sx={sx} {...other}>
+        <SimpleBarStyle  timeout={500} clickOnTrack={false} sx={sx} {...other}>
           {children}
         </SimpleBarStyle>
       </RootStyle>
