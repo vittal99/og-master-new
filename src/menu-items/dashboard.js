@@ -1,9 +1,21 @@
 // assets
-import { DashboardOutlined } from '@ant-design/icons';
+import { DashboardOutlined,
+  AppstoreAddOutlined,
+  AntDesignOutlined,
+  BarcodeOutlined,
+  BgColorsOutlined,
+  FontSizeOutlined,
+  LoadingOutlined } from '@ant-design/icons';
 
 // icons
 const icons = {
-  DashboardOutlined
+  DashboardOutlined,
+  FontSizeOutlined,
+  BgColorsOutlined,
+  BarcodeOutlined,
+  AntDesignOutlined,
+  LoadingOutlined,
+  AppstoreAddOutlined
 };
 
 // ==============================|| MENU ITEMS - DASHBOARD ||============================== //
@@ -20,6 +32,26 @@ const dashboard = {
       url: '/dashboard/default',
       icon: icons.DashboardOutlined,
       breadcrumbs: false
+    }, {
+      id: 'util-typography',
+      title: 'Manage Use',
+      type: 'item',
+      url: '/typography',
+      icon: icons.FontSizeOutlined
+    },
+    {
+      id: 'util-color',
+      title: 'Packages',
+      type: 'item',
+      url: '/color',
+      icon: icons.BgColorsOutlined
+    },
+    {
+      id: 'util-shadow',
+      title: 'Candidates',
+      type: 'item',
+      url: '/shadow',
+      icon: icons.BarcodeOutlined
     }
   ]
 };

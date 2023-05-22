@@ -32,9 +32,9 @@ const ComponentSkeleton = ({ children }) => {
   return (
     <>
       {isLoading && (
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6}>
-            {skeletonCard}
+        <Grid container spacing={10}>
+          <Grid item xs={12} md={20}>
+            {/* {skeletonCard} */}
           </Grid>
           <Grid item xs={12} md={6}>
             {skeletonCard}

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 // material-ui
 import { Box, Card, Grid, Stack, Typography } from '@mui/material';
@@ -47,13 +47,7 @@ function ColorBox({ bgcolor, title, data, dark, main }) {
   );
 }
 
-ColorBox.propTypes = {
-  bgcolor: PropTypes.string,
-  title: PropTypes.string,
-  data: PropTypes.object.isRequired,
-  dark: PropTypes.bool,
-  main: PropTypes.bool
-};
+
 
 // ===============================|| COMPONENT - COLOR ||=============================== //
 
@@ -92,7 +86,7 @@ const ComponentColor = () => (
           </Stack>
         </MainCard>
       </Grid>
-      <Grid item xs={12} sm={6} md={4}>
+      {/* <Grid item xs={12} sm={6} md={4}>
         <MainCard title="Other Color" codeHighlight>
           <Stack>
             <ColorBox bgcolor="secondary.A100" data={{ label: 'Grey-A1', color: '#ffffff' }} title="secondary.A100" dark />
@@ -111,8 +105,8 @@ const ComponentColor = () => (
             <ColorBox bgcolor="success.darker" data={{ label: 'Green-10', color: '#092b00' }} title="success.darker" />
           </Stack>
         </MainCard>
-      </Grid>
-      <Grid item xs={12} sm={6} md={4}>
+      </Grid> */}
+      {/* <Grid item xs={12} sm={6} md={4}>
         <MainCard title="Error Color" codeHighlight>
           <Stack>
             <ColorBox bgcolor="error.lighter" data={{ label: 'Red-1', color: '#fff1f0' }} title="error.lighter" dark />
@@ -133,7 +127,7 @@ const ComponentColor = () => (
             <ColorBox bgcolor="warning.darker" data={{ label: 'Gold-10', color: '#613400' }} title="warning.darker" />
           </Stack>
         </MainCard>
-      </Grid>
+      </Grid> */}
     </Grid>
   </ComponentSkeleton>
 );
