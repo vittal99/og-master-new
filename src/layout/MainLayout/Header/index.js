@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-import { Box } from '@mui/material';
+// import { Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { AppBar, IconButton, Toolbar, useMediaQuery } from '@mui/material';
 import AppBarStyled from './AppBarStyled';
@@ -34,10 +34,12 @@ const Header = ({ open, handleDrawerToggle }) => {
         marginTop: 10,
         // Add marginInline style here
         borderRadius: 10,
-        marginInline: 30,
+        // marginInline: 30,
         backgroundColor: scrollUp ? 'rgb(240,248,255)' : 'transparent',
         zIndex: scrollUp ? -1 : 'auto',
+        
       }}
+      sx={{ marginInline: 5}}
     >
       <IconButton
         disableRipple
@@ -74,15 +76,15 @@ const Header = ({ open, handleDrawerToggle }) => {
     <>
       {!matchDownMD ? (
         <AppBarStyled open={open} {...appBar}>
-          <Box sx={{ boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
+          {/* <Box sx={{ boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}> */}
             {mainHeader}
-          </Box>
+          {/* </Box> */}
         </AppBarStyled>
       ) : (
         <AppBar {...appBar}>
-          <Box sx={{ boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)'}}>
+          {/* <Box sx={{ boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)'}}> */}
             {mainHeader}
-          </Box>
+          {/* </Box> */}
         </AppBar>
       )}
       <div style={contentStyle}>{/* Content goes here */}</div>

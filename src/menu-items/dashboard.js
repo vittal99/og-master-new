@@ -47,12 +47,20 @@ const dashboard = {
       icon: icons.BgColorsOutlined
     },
     {
-      id: 'util-shadow',
+      id: 'util-billing',
+      title: 'Billing',
+      type: 'item',
+      url: '/billing',
+      icon: icons.BgColorsOutlined
+    },
+    {
+      id: 'util-candidate',
       title: 'Candidates',
       type: 'item',
-      url: '/shadow',
+      url: '/candidate',
       icon: icons.BarcodeOutlined
-    }
+    },
+   
   ]
 };
 
