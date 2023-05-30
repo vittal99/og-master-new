@@ -57,6 +57,7 @@ const NavItem = ({ item, level }) => {
       sx={{
         marginLeft:1,
         marginRight:1,
+        marginBottom:1,
         borderRadius:2,
         zIndex: 1201,
         pl: drawerOpen ? `${level * 28}px` : 1.5,

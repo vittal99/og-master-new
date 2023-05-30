@@ -3,7 +3,7 @@ import React, { useState} from 'react';
 
 // project import
 import ComponentSkeleton from './ComponentSkeleton';
-import MainCard from 'components/MainCard';
+// import MainCard from 'components/MainCard';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -14,6 +14,11 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+
 
 
 // ==============================|| COMPONENTS - TYPOGRAPHY ||============================== //
@@ -86,11 +91,21 @@ const ComponentTypography = () => {
   const endIndex = startIndex + pageSize;
   const currentSubset = rows.slice(startIndex, endIndex);
 
+  //------------Add user-----------//
+  const [users, setUsers] = useState(false);
+  const addUser=()=>{
+    setUsers(true);
+  }
+
+  const closeuser=()=>{
+    setUsers(false);
+  }
+
   return (
     <ComponentSkeleton>
-      <Grid container spacing={3}>
+      <Grid container spacing={5}>
         <Grid item xs={16} sm={10} md={8}>
-          
+          <h3>Users List</h3>
           <TableContainer component={Paper}>
             <Table size="medium" aria-label="a dense table">
               <TableHead>
@@ -131,62 +146,57 @@ const ComponentTypography = () => {
           </TableContainer>
         </Grid>
         <Grid item xs={10} sm={6} md={3}>
-          <MainCard  codeHighlight>
-            <Stack>
-            <Box
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <div>
-        <TextField
-          required
-          id="outlined-required"
-          label="Required"
-          defaultValue="Hello World"
+        <h3>Add User</h3>
+ 
+{users == false ?
+      
+      <Button variant="contained" onClick={addUser}>Add User</Button>
+      :
+        <Card sx={{ maxWidth: 345 }}>
+        <CardMedia
+          // sx={{ height: 50}}
+          image="/static/images/cards/contemplative-reptile.jpg"
+          title="green iguana"
         />
-        <TextField
-          disabled
-          id="outlined-disabled"
-          label="Disabled"
-          defaultValue="Hello World"
-        />
-        <TextField
-          id="outlined-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-        />
-        <TextField
-          id="outlined-read-only-input"
-          label="Read Only"
-          defaultValue="Hello World"
-          InputProps={{
-            readOnly: true,
-          }}
-        />
-        <TextField
-          id="outlined-number"
-          label="Number"
-          type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <TextField id="outlined-search" label="Search field" type="search" />
-        <TextField
-          id="outlined-helperText"
-          label="Helper text"
-          defaultValue="Default Value"
-          helperText="Some important text"
-        />
-      </div>
-    </Box>
-            </Stack>
-          </MainCard>
+        <CardContent>
+        <Box
+        component="form"
+        sx={{
+          '& .MuiTextField-root': { m: 1, },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <div>
+          <TextField
+            required
+            id="outlined-required"
+            label="User Name"
+            placeholder="User Name"
+          />
+          <TextField
+            required
+            id="outlined-required"
+            label="Role"
+            placeholder="Role"
+          />
+          <TextField
+            required
+            id="outlined-required"
+            label="Date of join"
+            placeholder="Date of join"
+          />
+        </div>
+      </Box>
+       
+        </CardContent>
+        <CardActions>
+          <Button size="small">Submit</Button>
+          <Button size="small" onClick={closeuser}>Close</Button>
+        </CardActions>
+      </Card>
+
+}
         </Grid>
       </Grid>
     </ComponentSkeleton>

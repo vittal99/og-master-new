@@ -34,7 +34,7 @@ const dashboard = {
       breadcrumbs: false
     }, {
       id: 'util-typography',
-      title: 'Manage Use',
+      title: 'Manage User',
       type: 'item',
       url: '/typography',
       icon: icons.FontSizeOutlined
@@ -47,17 +47,24 @@ const dashboard = {
       icon: icons.BgColorsOutlined
     },
     {
-      id: 'util-billing',
-      title: 'Billing',
-      type: 'item',
-      url: '/billing',
-      icon: icons.BgColorsOutlined
-    },
-    {
-      id: 'util-candidate',
+      id: 'util-shadow',
       title: 'Candidates',
       type: 'item',
       url: '/candidate',
+      icon: icons.BarcodeOutlined
+    },
+    {
+      id: 'Billing',
+      title: 'Billing',
+      type: 'item',
+      url: '/billing',
+      icon: icons.BarcodeOutlined
+    },
+    {
+      id: 'pan',
+      title: 'Panverify',
+      type: 'item',
+      url: '/panverify',
       icon: icons.BarcodeOutlined
     },
    

@@ -70,7 +70,7 @@ const ComponentColor = () => (
           </Stack>
         </MainCard>
       </Grid>
-      <Grid item xs={12} sm={6} md={4}>
+      {/* <Grid item xs={12} sm={6} md={4}>
         <MainCard title="Secondary Color" codeHighlight>
           <Stack>
             <ColorBox bgcolor="secondary.lighter" data={{ label: 'Grey-1', color: '#fafafa' }} title="secondary.lighter" dark />
@@ -85,7 +85,7 @@ const ComponentColor = () => (
             <ColorBox bgcolor="secondary.darker" data={{ label: 'Grey-10', color: '#000000' }} title="secondary.darker" />
           </Stack>
         </MainCard>
-      </Grid>
+      </Grid> */}
       {/* <Grid item xs={12} sm={6} md={4}>
         <MainCard title="Other Color" codeHighlight>
           <Stack>
