@@ -1,38 +1,4 @@
-// // material-ui
-// // import { Box, IconButton, Link, useMediaQuery } from '@mui/material';
-// import { Box, useMediaQuery } from '@mui/material';
-// // import { GithubOutlined } from '@ant-design/icons';
 
-// // project import
-// // import Search from './Search';
-// import Profile from './Profile';
-// import Notification from './Notification';
-// import MobileSection from './MobileSection';
-// // import Typography from 'themes/overrides/Typography';
-
-// // ==============================|| HEADER - CONTENT ||============================== //
-
-// const HeaderContent = () => {
-//   const matchesXs = useMediaQuery((theme) => theme.breakpoints.down('md'));
-
-//   return (
-//     <>
-//       {/* {!matchesXs && <Search />} */}
-//       {/* {matchesXs && <Box sx={{ width: '100%', ml: 1 }} />} */}
-//       <h3>Dashboard</h3>
-
-//       <Box sx={{ marginLeft: 'auto' }}> {/* Set marginLeft to 'auto' to align to the right */}
-//         <Notification />
-//       </Box>
-    
-      
-//       {!matchesXs && <Profile />}
-//       {matchesXs && <MobileSection />}
-//     </>
-//   );
-// };
-
-// export default HeaderContent;
 
 
 
@@ -53,20 +19,28 @@ const HeaderContent = () => {
   }, [location]);
 
   const pageTitleMappings = {
-    // '/dashboard': 'Dashboard',
-    '/shadow': 'Shadow',
-    '/color': 'Color',
+     '/dashboard/default': 'Dashboard',
+    '/typography':'Typography',
+    '/candidate':'Candidates',
+    '/candidateProfile':'Profile',
+    '/addCandidate':'AddCandidates',
+    '/billing':'Billing'
+
+
     // Add more mappings as needed
   };
 
   const getPageTitle = () => {
     const path = location.pathname;
-    return pageTitleMappings[path] || 'Default Header Name';
+    return pageTitleMappings[path] || 'Dashboard';
   };
 
   return (
     <>
-      <h3>{getPageTitle()}</h3>
+     
+
+      
+      <h3 style={{marginLeft:10,fontSize:18}}  >{getPageTitle()}</h3>
 
       <Box sx={{ marginLeft: 'auto' }}>
         <Notification />
@@ -74,6 +48,7 @@ const HeaderContent = () => {
 
       {!matchesXs && <Profile />}
       {matchesXs && <MobileSection />}
+     
     </>
   );
 };

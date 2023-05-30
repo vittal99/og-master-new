@@ -43,14 +43,21 @@ const dashboard = {
       id: 'util-color',
       title: 'Packages',
       type: 'item',
-      url: '/Package',
+      url: '/color',
       icon: icons.BgColorsOutlined
     },
     {
       id: 'util-shadow',
       title: 'Candidates',
       type: 'item',
-      url: '/shadow',
+      url: '/candidate',
+      icon: icons.BarcodeOutlined
+    },
+    {
+      id: 'Billing',
+      title: 'Billing',
+      type: 'item',
+      url: '/billing',
       icon: icons.BarcodeOutlined
     },
     {
@@ -59,7 +66,8 @@ const dashboard = {
       type: 'item',
       url: '/panverify',
       icon: icons.BarcodeOutlined
-    }
+    },
+   
   ]
 };
 
