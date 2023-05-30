@@ -5,8 +5,8 @@ import { Box, Grid } from '@mui/material';
 
 // project import
 import AuthCard from './AuthCard';
-import Logo from 'components/Logo';
-import AuthFooter from 'components/cards/AuthFooter';
+import Logo from 'images/ogLogo.png';
+// import AuthFooter from 'components/cards/AuthFooter';
 
 // assets
 import AuthBackground from 'assets/images/auth/AuthBackground';
@@ -25,7 +25,11 @@ const AuthWrapper = ({ children }) => (
       }}
     >
       <Grid item xs={12} sx={{ ml: 3, mt: 3 }}>
-        <Logo />
+      <img
+  src={Logo}
+  alt="Company Logo"
+  style={{ width: '100px' }}
+/>
       </Grid>
       <Grid item xs={12}>
         <Grid
@@ -36,13 +40,13 @@ const AuthWrapper = ({ children }) => (
           alignItems="center"
           sx={{ minHeight: { xs: 'calc(100vh - 134px)', md: 'calc(100vh - 112px)' } }}
         >
-          <Grid item>
+          <Grid item >
             <AuthCard>{children}</AuthCard>
           </Grid>
         </Grid>
       </Grid>
       <Grid item xs={12} sx={{ m: 3, mt: 1 }}>
-        <AuthFooter />
+        {/* <AuthFooter /> */}
       </Grid>
     </Grid>
   </Box>
