@@ -1,5 +1,88 @@
+
+import {
+ 
+  OutlinedInput,
+
+  Button
+} from '@mui/material';
+import { useState } from 'react';
+import axios from 'axios';
+import { server } from 'API/server';
+
+
+const CountryDropdown =() =>{
+
+
+    const signup = async()=>{
+        try {
+            const data = {email,password}
+            console.log('dATA',data);
+           await axios.post(`${server}/auth/login`,data).then((res)=>{
+
+           console .log(res.data)
+           }
+           )
+            
+        } catch (error) {
+            console.log("error",error)
+            
+        }
+    }
+
+    const [email,setEmail]=useState('')
+    const [password,setPassword]=useState('')
+    return(
+        <form>
+
+
+        <OutlinedInput
+                    
+                    id="lastname-signup"
+                    type="lastname"
+                    value={email}
+                    name="lastname"
+                   
+                    onChange={(e)=>setEmail(e.target.value)}
+                    placeholder="Doe"
+                    inputProps={{}}
+        />
+        <OutlinedInput
+                    
+                    id="firstname-signup"
+                    type="lastname"
+                    value={password}
+                    name="lastname"
+                  
+                    onChange={(e)=>setPassword(e.target.value)}
+                    placeholder="Doe"
+                    inputProps={{}}
+        />
+
+        <Button onClick={signup}>Signup</Button>
+        </form>
+    )
+}
+
+
+export default CountryDropdown
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import { useEffect, useState } from 'react';
 // import { Link as RouterLink } from 'react-router-dom';
+
+
 
 // // material-ui
 // import {
@@ -315,3 +398,5 @@
 // };
 
 // export default AuthRegister;
+
+

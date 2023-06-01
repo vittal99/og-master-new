@@ -9,7 +9,7 @@ import AuthCard from './AuthCard';
 // import AuthFooter from 'components/cards/AuthFooter';
 
 
-const AuthWrapper = ({ children,  cardWidth,justifyContent,alignItems}) => (
+const AuthWrapper = ({ children, cardWidth,justifyContent,alignItems}) => (
   <Box>
   
     {/* <AuthBackground /> */}
@@ -36,7 +36,7 @@ const AuthWrapper = ({ children,  cardWidth,justifyContent,alignItems}) => (
           // sx={{ minHeight: { xs: 'calc(100vh - 134px)', md: 'calc(100vh - 112px)' } }}
         >
           <Grid item >
-            <AuthCard width={cardWidth}>{children}</AuthCard>
+            <AuthCard cardWidth={cardWidth}>{children}</AuthCard>
           </Grid>
         </Grid>
       </Grid>

@@ -8,6 +8,7 @@ import CandidateProfile from 'pages/candidate/candidateProfile';
 import AddCandidate from 'pages/candidate/addCandidate';
 import Billing from 'pages/Billing/billing';
 import Verifiedpan from 'pages/VerfyUser/verifiedpan';
+import CountryDropdown from 'pages/authentication/auth-forms/CountryDropdown';
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
@@ -30,10 +31,6 @@ const MainRoutes = {
   path: '/',
   element: <MainLayout />,
   children: [
-    {
-      path: '/',
-      element: <DashboardDefault />
-    },
     {
       path: 'color',
       element: <Color />
@@ -92,6 +89,10 @@ const MainRoutes = {
     ,{
       path:'verifiedpan',
       element:<Verifiedpan />
+    }
+    ,{
+      path:'CountryDropdown',
+      element:<CountryDropdown/>
     }
   ]
 };

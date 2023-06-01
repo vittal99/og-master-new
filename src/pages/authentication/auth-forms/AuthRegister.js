@@ -42,6 +42,7 @@ const countryOptions = getNames().map((name) => ({ label: name, value: name }));
 
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import axios from '../../../../node_modules/axios/index';
 
 
 // ============================|| FIREBASE - REGISTER ||============================ //
@@ -51,6 +52,8 @@ const AuthRegister = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [country, setCountry] = useState('');
 const [phoneNumber, setPhoneNumber] = useState('');
+const [firstname,setFirstname] = useState('');
+const [lastname,setLastname] = useState('');
 
   
   // const [searchQuery, setSearchQuery] = useState('');
@@ -74,8 +77,24 @@ const [phoneNumber, setPhoneNumber] = useState('');
 
   useEffect(() => {
     changePassword('');
-  }, []);
 
+  }, []);
+  const signup = async(e)=>{
+    console.log('ree');
+    e.preventDefault()
+    try {
+      const data = {firstname,lastname,country,email,company,phoneNumber,password}
+      console.log('dATA',data);
+
+     await axios.post(`http://localhost:8484/auth/signup${data}`).then((res)=>{
+        console.log(res);
+      })
+      console.log("firstname",firstname)
+      
+    } catch (error) {
+      console.log('error',error);
+    }
+  }
   return (
     <>
       <Formik
@@ -117,10 +136,11 @@ const [phoneNumber, setPhoneNumber] = useState('');
                   <OutlinedInput
                     id="firstname-login"
                     type="firstname"
-                    value={values.firstname}
+                    value={firstname}
                     name="firstname"
                     onBlur={handleBlur}
-                    onChange={handleChange}
+                    onChange={(e)=>setFirstname(e.target.value)}
+                    
                     placeholder="John"
                     fullWidth
                     error={Boolean(touched.firstname && errors.firstname)}
@@ -132,6 +152,8 @@ const [phoneNumber, setPhoneNumber] = useState('');
                   )}
                 </Stack>
               </Grid>
+
+             
               <Grid item xs={12} md={6}>
                 <Stack spacing={1}>
                   <InputLabel htmlFor="lastname-signup">Last Name*</InputLabel>
@@ -140,10 +162,10 @@ const [phoneNumber, setPhoneNumber] = useState('');
                     error={Boolean(touched.lastname && errors.lastname)}
                     id="lastname-signup"
                     type="lastname"
-                    value={values.lastname}
+                    value={lastname}
                     name="lastname"
                     onBlur={handleBlur}
-                    onChange={handleChange}
+                    onChange={setLastname()}
                     placeholder="Doe"
                     inputProps={{}}
                   />
@@ -297,7 +319,7 @@ const [phoneNumber, setPhoneNumber] = useState('');
               )}
               <Grid item xs={12}>
                 <AnimateButton>
-                  <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
+                  <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary" onClick={signup}>
                     Create Account
                   </Button>
                 </AnimateButton>

@@ -67,6 +67,13 @@ const dashboard = {
       url: '/panverify',
       icon: icons.BarcodeOutlined
     },
+    {
+      id: 'countrydropdown',
+      title: 'Country',
+      type: 'item',
+      url: '/CountryDropdown',
+      icon: icons.BarcodeOutlined
+    },
    
   ]
 };
