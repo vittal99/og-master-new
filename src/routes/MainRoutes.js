@@ -9,7 +9,6 @@ import AddCandidate from 'pages/candidate/addCandidate';
 import Billing from 'pages/Billing/billing';
 import Verifiedpan from 'pages/VerfyUser/verifiedpan';
 import Manageuser from 'pages/User/manageuser';
-// import AuthLogin from 'pages/authentication/Login';
 
 
 // render - dashboard
@@ -33,6 +32,10 @@ const MainRoutes = {
   path: '/',
   element: <MainLayout />,
   children: [
+    {
+      path: '/',
+      element: <DashboardDefault />
+    },
     {
       path: 'color',
       element: <Color />

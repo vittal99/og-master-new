@@ -69,6 +69,8 @@ const Package = () => {
               <Typography variant="h5" sx={{ marginTop: 2 }}>
                 {item.storage}MB Storage
               </Typography>
+
+              
               <Typography variant="h5" sx={{ marginTop: 2 }}>
                 {item.users} Users
               </Typography>
