@@ -11,6 +11,7 @@ import Verifiedpan from 'pages/VerfyUser/verifiedpan';
 import Manageuser from 'pages/User/manageuser';
 // import AuthLogin from 'pages/authentication/Login';
 
+import CountryDropdown from 'pages/authentication/auth-forms/CountryDropdown';
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
@@ -94,6 +95,10 @@ const MainRoutes = {
       path:'verifiedpan',
       element:<Verifiedpan />,
       title: 'Panverify',
+    }
+    ,{
+      path:'CountryDropdown',
+      element:<CountryDropdown/>
     }
   ]
 };

@@ -21,18 +21,22 @@ import {
 // third party
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-
+import { useState } from 'react';
+import axios from 'axios';
+import { server } from 'API/server';
 // project import
 import FirebaseSocial from './FirebaseSocial';
 import AnimateButton from 'components/@extended/AnimateButton';
 
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const AuthLogin = () => {
   const [checked, setChecked] = React.useState(false);
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => {
@@ -42,6 +46,33 @@ const AuthLogin = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  
+
+  const login = async (e) => {
+    e.preventDefault();
+   
+    try {
+      const data = { email, password };
+      console.log('DATA', data);
+      await axios.post(`${server}/auth/login`, data).then((res) => {
+        const name = res.data.tokenResponse.userData.username;
+
+        console.log(res);
+        if (res.status === 200) {
+          alert(`${name} is successfully logged in`);
+          navigate('/dashboard/default'); // Navigate to dashboard
+        } else {
+          alert('Login failed');
+        }
+      });
+    } catch (error) {
+      console.log('Error', error);
+    }
+  };
+
+const [email,setEmail]=useState('')
+const [password,setPassword]=useState('')
 
   return (
     <>
@@ -66,7 +97,7 @@ const AuthLogin = () => {
           }
         }}
       >
-        {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
+        {({ errors, handleBlur, handleSubmit, isSubmitting, touched}) => (
           <form noValidate onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
@@ -75,10 +106,11 @@ const AuthLogin = () => {
                   <OutlinedInput
                     id="email-login"
                     type="email"
-                    value={values.email}
+                    value={email}
                     name="email"
                     onBlur={handleBlur}
-                    onChange={handleChange}
+                      
+                    onChange={(e)=>setEmail(e.target.value)}
                     placeholder="Enter email address"
                     fullWidth
                     error={Boolean(touched.email && errors.email)}
@@ -98,10 +130,10 @@ const AuthLogin = () => {
                     error={Boolean(touched.password && errors.password)}
                     id="-password-login"
                     type={showPassword ? 'text' : 'password'}
-                    value={values.password}
+                    value={password}
                     name="password"
                     onBlur={handleBlur}
-                    onChange={handleChange}
+                    onChange={(e)=>setPassword(e.target.value)}
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton
@@ -151,7 +183,7 @@ const AuthLogin = () => {
               )}
               <Grid item xs={12}>
                 <AnimateButton>
-                  <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
+                  <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary" onClick={login}>
                     Login
                   </Button>
                 </AnimateButton>
