@@ -20,11 +20,14 @@ const HeaderContent = () => {
 
   const pageTitleMappings = {
      '/dashboard/default': 'Dashboard',
-    '/typography':'Typography',
+    '/manageuser':'Manage User',
     '/candidate':'Candidates',
     '/candidateProfile':'Profile',
     '/addCandidate':'AddCandidates',
-    '/billing':'Billing'
+    '/billing':'Billing',
+    '/panverify':'Pan Verify',
+    '/Verifiedpan':'Pan Verification'
+
 
 
     // Add more mappings as needed
@@ -32,6 +35,7 @@ const HeaderContent = () => {
 
   const getPageTitle = () => {
     const path = location.pathname;
+    console.log("hi",path);
     return pageTitleMappings[path] || 'Dashboard';
   };
 

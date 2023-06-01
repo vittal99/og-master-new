@@ -8,6 +8,9 @@ import CandidateProfile from 'pages/candidate/candidateProfile';
 import AddCandidate from 'pages/candidate/addCandidate';
 import Billing from 'pages/Billing/billing';
 import Verifiedpan from 'pages/VerfyUser/verifiedpan';
+import Manageuser from 'pages/User/manageuser';
+// import AuthLogin from 'pages/authentication/Login';
+
 import CountryDropdown from 'pages/authentication/auth-forms/CountryDropdown';
 
 // render - dashboard
@@ -17,7 +20,7 @@ const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
 const SamplePage = Loadable(lazy(() => import('pages/extra-pages/SamplePage')));
 
 // render - utilities
-const Typography = Loadable(lazy(() => import('pages/components-overview/Typography')));
+
 const Package = Loadable(lazy(() => import('pages/packages/package')));
 const Color = Loadable(lazy(() => import('pages/components-overview/Color')));
 const Shadow = Loadable(lazy(() => import('pages/components-overview/Shadow')));
@@ -53,8 +56,8 @@ const MainRoutes = {
       element: <Shadow />
     },
     {
-      path: 'typography',
-      element: <Typography />
+      path: 'manageuser',
+      element: <Manageuser />
     },
     {
       path: 'icons/ant',
@@ -80,15 +83,18 @@ const MainRoutes = {
 
     ,{
       path:'package',
+      title: 'Panverify',
       element:<Package />
     }
     ,{
       path:'panverify',
+      title: 'Panverify',
       element:<Panverify />
     }
     ,{
       path:'verifiedpan',
-      element:<Verifiedpan />
+      element:<Verifiedpan />,
+      title: 'Panverify',
     }
     ,{
       path:'CountryDropdown',

@@ -33,10 +33,10 @@ const dashboard = {
       icon: icons.DashboardOutlined,
       breadcrumbs: false
     }, {
-      id: 'util-typography',
+      id: 'manageuser',
       title: 'Manage User',
       type: 'item',
-      url: '/typography',
+      url: '/manageuser',
       icon: icons.FontSizeOutlined
     },
     {
