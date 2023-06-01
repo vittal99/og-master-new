@@ -10,6 +10,7 @@ import AuthCard from './AuthCard';
 
 
 const AuthWrapper = ({ children,  cardWidth,justifyContent,alignItems,width}) => (
+
   <Box>
   
     {/* <AuthBackground /> */}
@@ -37,6 +38,7 @@ const AuthWrapper = ({ children,  cardWidth,justifyContent,alignItems,width}) =>
         >
           <Grid item >
             <AuthCard cardWidth={cardWidth} width={width}>{children}</AuthCard>
+
           </Grid>
         </Grid>
       </Grid>
