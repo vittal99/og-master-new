@@ -36,7 +36,7 @@ import MainCard from 'components/MainCard';
 
 
 
-const AuthCard = ({ children, cardWidth, ...other }) => {
+const AuthCard = ({ children, cardWidth,width, ...other }) => {
   return (
     <MainCard
       sx={{
@@ -52,7 +52,7 @@ const AuthCard = ({ children, cardWidth, ...other }) => {
       border={false}
       boxShadow
     >
-      <Box sx={{ p: { xs: 2, sm: 3, md: 4, xl: 5 } }}>{children}</Box>
+      <Box sx={{width:width, p: { xs: 2, sm: 3, md: 4, xl: 5 } }}>{children}</Box>
     </MainCard>
   );
 };
@@ -60,6 +60,7 @@ const AuthCard = ({ children, cardWidth, ...other }) => {
 AuthCard.propTypes = {
   children: PropTypes.node,
   cardWidth: PropTypes.object, // Add cardWidth prop type
+  width:PropTypes.object,
 };
 
 export default AuthCard;

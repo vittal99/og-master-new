@@ -2,22 +2,23 @@ import { Grid, Stack} from '@mui/material';
 import React, { useState} from 'react';
 
 // project import
-import ComponentSkeleton from './ComponentSkeleton';
+import ComponentSkeleton from '../components-overview/ComponentSkeleton';
 // import MainCard from 'components/MainCard';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
+// import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+// import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
+// import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+// import Card from '@mui/material/Card';
+// import CardActions from '@mui/material/CardActions';
+// import CardContent from '@mui/material/CardContent';
+// import CardMedia from '@mui/material/CardMedia';
+import AuthWrapper from 'pages/authentication/AuthWrapper';
 
 
 
@@ -35,7 +36,7 @@ function createData(
 // ==============================|| COMPONENTS - TYPOGRAPHY ||===========
 
 const rows = [
-  createData(1,'raju','HR','12-05-2023'),
+  createData(1,'ravi kumar','HR','12-05-2023'),
   createData(2,'raju','HR','12-05-2023'),
   createData(3,'raju','HR','12-05-2023'),
   createData(4,'raju','HR','12-05-2023'),
@@ -73,7 +74,7 @@ const rows = [
 ];
 const pageSize = 10;
 
-const ComponentTypography = () => {
+const Manageuser = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [cPage, setCPage] = useState(1);
 
@@ -103,17 +104,18 @@ const ComponentTypography = () => {
 
   return (
     <ComponentSkeleton>
-      <Grid container spacing={5}>
+      <Grid container spacing={3}>
         <Grid item xs={16} sm={10} md={8}>
           <h3>Users List</h3>
-          <TableContainer component={Paper}>
-            <Table size="medium" aria-label="a dense table">
+          <AuthWrapper width={600} cardWidth={{ xs: 400, lg: 1200 }}>
+          {/* <TableContainer component={Paper}> */}
+            <Table>
               <TableHead>
-                <TableRow>
+              <TableRow >
                   <TableCell>#</TableCell>
-                  <TableCell align="right">Name</TableCell>
-                  <TableCell align="right">Role</TableCell>
-                  <TableCell align="right">Date</TableCell>
+                  <TableCell align="center">Name</TableCell>
+                  <TableCell align="center">Role</TableCell>
+                  <TableCell align="center">Date</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -125,9 +127,9 @@ const ComponentTypography = () => {
                     <TableCell component="th" scope="row">
                       {row.id}
                     </TableCell>
-                    <TableCell align="right">{row.name}</TableCell>
-                    <TableCell align="right">{row.role}</TableCell>
-                    <TableCell align="right">{row.date}</TableCell>
+                    <TableCell align="center">{row.name}</TableCell>
+                    <TableCell align="center">{row.role}</TableCell>
+                    <TableCell align="center">{row.date}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -143,7 +145,8 @@ const ComponentTypography = () => {
                 Next
               </Button>
             </Stack>
-          </TableContainer>
+          {/* </TableContainer> */}
+          </AuthWrapper>
         </Grid>
         <Grid item xs={10} sm={6} md={3}>
         <h3>Add User</h3>
@@ -152,22 +155,9 @@ const ComponentTypography = () => {
       
       <Button variant="contained" onClick={addUser}>Add User</Button>
       :
-        <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
-          // sx={{ height: 50}}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="green iguana"
-        />
-        <CardContent>
-        <Box
-        component="form"
-        sx={{
-          '& .MuiTextField-root': { m: 1, },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <div>
+      <AuthWrapper width={270} cardWidth={{ xs: 400, lg: 1200 }}>
+
+        <Stack gap={2}>
           <TextField
             required
             id="outlined-required"
@@ -186,15 +176,16 @@ const ComponentTypography = () => {
             label="Date of join"
             placeholder="Date of join"
           />
-        </div>
-      </Box>
-       
-        </CardContent>
-        <CardActions>
-          <Button size="small">Submit</Button>
+      
+      
+         <div>
+         <Button size="small">Submit</Button>
           <Button size="small" onClick={closeuser}>Close</Button>
-        </CardActions>
-      </Card>
+         </div>
+
+          </Stack>
+</AuthWrapper>
+
 
 }
         </Grid>
@@ -203,4 +194,4 @@ const ComponentTypography = () => {
   );
 };
 
-export default ComponentTypography;
+export default Manageuser;
