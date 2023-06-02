@@ -47,32 +47,65 @@ const AuthLogin = () => {
     event.preventDefault();
   };
 
-  
+
+
+  // const login = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const data = { email, password };
+  //     const response = await axios.post(`${server}/auth/login`, data);
+  //     const { tokenResponse } = response.data;   
+  //     if (response.status === 200) {
+  //       const { username, _id: userId } = tokenResponse.userData;
+  //       sessionStorage.setItem('userData', JSON.stringify(userId));
+  //       alert(`${username} is successfully logged in`);
+  //       navigate('/dashboard/default');
+  //     } else {
+  //       alert('Login failed');
+  //     }
+  //   } catch (error) {
+  //     console.log('Error', error);
+  //   }
+  // };
 
   const login = async (e) => {
     e.preventDefault();
-   
     try {
       const data = { email, password };
-      console.log('DATA', data);
-      await axios.post(`${server}/auth/login`, data).then((res) => {
-        const name = res.data.tokenResponse.userData.username;
-
-        console.log(res);
-        if (res.status === 200) {
-          alert(`${name} is successfully logged in`);
-          navigate('/dashboard/default'); // Navigate to dashboard
+      await axios.post(`${server}/auth/login`, data).then(function (response) { 
+        console.log(response);
+       const user = response.data;
+       const username =  response.data.tokenResponse.userData.username;
+       sessionStorage.setItem('userData', JSON.stringify(user));
+        if (response.status === 200) {
+         
+          alert(`${username} is successfully logged in`);
+          navigate('/dashboard/default');
         } else {
           alert('Login failed');
         }
-      });
+       })
     } catch (error) {
-      console.log('Error', error);
-    }
-  };
+       console.log('Error', error);
+     }
+   };
+  
 
-const [email,setEmail]=useState('')
-const [password,setPassword]=useState('')
+  // useEffect(() => {
+  //   const userdata = sessionStorage.getItem('userData')
+  //   console.log('userDetails', userdata);
+  //   if (userdata) {
+  //     navigate("/dashboard/default")
+  //   } else {
+  //     navigate('/')
+  //   }
+  // }, [])
+
+
+
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   return (
     <>
@@ -97,7 +130,7 @@ const [password,setPassword]=useState('')
           }
         }}
       >
-        {({ errors, handleBlur, handleSubmit, isSubmitting, touched}) => (
+        {({ errors, handleBlur, handleSubmit, isSubmitting, touched }) => (
           <form noValidate onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
@@ -109,8 +142,8 @@ const [password,setPassword]=useState('')
                     value={email}
                     name="email"
                     onBlur={handleBlur}
-                      
-                    onChange={(e)=>setEmail(e.target.value)}
+
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter email address"
                     fullWidth
                     error={Boolean(touched.email && errors.email)}
@@ -133,7 +166,7 @@ const [password,setPassword]=useState('')
                     value={password}
                     name="password"
                     onBlur={handleBlur}
-                    onChange={(e)=>setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton

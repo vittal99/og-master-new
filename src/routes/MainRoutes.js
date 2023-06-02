@@ -9,6 +9,8 @@ import AddCandidate from 'pages/candidate/addCandidate';
 import Billing from 'pages/Billing/billing';
 import Verifiedpan from 'pages/VerfyUser/verifiedpan';
 import Manageuser from 'pages/User/manageuser';
+import { useMemo,useState} from "react";
+import {Navigate} from "react-router-dom"
 
 import CountryDropdown from 'pages/authentication/auth-forms/CountryDropdown';
 
@@ -29,6 +31,24 @@ const Panverify = Loadable(lazy(() => import('pages/VerfyUser/panverify')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
+const PrivateRoute = ({ path, element  }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState("");
+
+  useMemo(()=>{
+    setIsAuthenticated(sessionStorage.getItem("userData"))
+  },[])
+    return(
+      <>
+      {
+     isAuthenticated ? (
+     element
+    ) : (
+      <Navigate to="/"  replace state={{ from: path }}/>
+    )
+ }
+    </>
+    )
+  };
 const MainRoutes = {
   path: '/',
   element: <MainLayout />,
@@ -42,64 +62,67 @@ const MainRoutes = {
       children: [
         {
           path: 'default',
-          element: <DashboardDefault />
+          element: <PrivateRoute path="/dashboard/default" element={<DashboardDefault />} />
         }
       ]
     },
     {
       path: 'sample-page',
-      element: <SamplePage />
+      element:  {
+        path: 'default',
+        element: <PrivateRoute path="/sample-page" element={<SamplePage />} />
+      }
     },
     {
       path: 'shadow',
       element: <Shadow />
     },
     {
-      path: 'manageuser',
-      element: <Manageuser />
+      path: 'default',
+      element: <PrivateRoute path="/manageuser" element={<Manageuser />} />
     },
     {
       path: 'icons/ant',
       element: <AntIcons />
     }
     ,{
-      path: 'candidate',
-      element: <Candidate/>
+      path: 'default',
+      element:<PrivateRoute path="/candidate" element={ <Candidate/>} />
     }
     ,{
-      path: 'candidateProfile',
-      element: <CandidateProfile/>
+      path: 'default',
+      element: <PrivateRoute path="/candidateProfile" element={ <CandidateProfile/>} />
     },
     {
-      path: 'addCandidate',
-      element: <AddCandidate/>
+      path: 'default',
+      element: <PrivateRoute path="/addCandidate" element={<AddCandidate/>} />
     },
     {
-      path: 'billing',
-      element: <Billing/>
+      path: 'default',
+      element:<PrivateRoute path="/billing" element={ <Billing/>} />
     }
 
 
     ,{
-      path:'package',
-      title: 'Panverify',
-      element:<Package />
+      path:'default',
+      element: <PrivateRoute path="/package" element={<Package />} />
     }
     ,{
-      path:'panverify',
+      path:'default',
       title: 'Panverify',
-      element:<Panverify />
+      element:<PrivateRoute path="/panverify" element={<Panverify />} />
     }
     ,{
-      path:'verifiedpan',
-      element:<Verifiedpan />,
+      path:'default',
+      element:<PrivateRoute path="/verifiedpan" element={<Verifiedpan />} />,
       title: 'Panverify',
     }
     ,{
-      path:'CountryDropdown',
-      element:<CountryDropdown/>
+      path:'default',
+      element:<PrivateRoute path="/CountryDropdown" element={<CountryDropdown/>} />
     }
   ]
 };
 
 export default MainRoutes;
+export { PrivateRoute };
