@@ -33,6 +33,7 @@ const Panverify = Loadable(lazy(() => import('pages/VerfyUser/panverify')));
 
 const PrivateRoute = ({ path, element  }) => {
   const [isAuthenticated, setIsAuthenticated] = useState("");
+  //  const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
   useMemo(()=>{
     setIsAuthenticated(sessionStorage.getItem("userData"))

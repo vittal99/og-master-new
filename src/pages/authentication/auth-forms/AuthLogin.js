@@ -80,7 +80,9 @@ const AuthLogin = () => {
         if (response.status === 200) {
          
           alert(`${username} is successfully logged in`);
+          // dispatch(setAuthenticated(userData));
           navigate('/dashboard/default');
+
         } else {
           alert('Login failed');
         }
