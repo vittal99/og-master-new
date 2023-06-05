@@ -1,15 +1,10 @@
 
-
 export const handleLogout = (navigate) => {
-  const userData = JSON.parse(sessionStorage.getItem('userData'));
-  console.log('Stored Data:', userData);
-  
+  // const navigate = useNavigate();
 
+  // Clear session storage or any other necessary cleanup
   sessionStorage.removeItem('userData');
-  console.log('After remove:', sessionStorage.getItem('userData'));
 
-  
-
-  navigate('/');
-
+  // Reset the navigation state
+  navigate('/', { replace: true });
 };
